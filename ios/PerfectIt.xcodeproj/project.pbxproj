@@ -161,7 +161,6 @@
 				79897BF9E524A1E771E42EEA /* Pods-PerfectItTests.debug.xcconfig */,
 				CAFFF994A37175CF4991AA25 /* Pods-PerfectItTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -204,7 +203,6 @@
 			children = (
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +316,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
