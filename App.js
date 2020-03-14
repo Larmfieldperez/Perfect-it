@@ -32,7 +32,7 @@ function App() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'purple',
+          activeTintColor: '#E7E31D',
           inactiveTintColor: 'gray',
         }}>
         <Tab.Screen name="Input" component={Input} />
