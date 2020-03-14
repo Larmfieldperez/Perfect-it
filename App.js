@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Record from './components/Record';
+import Input from './components/Input'
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Input" component={Input} />
         <Tab.Screen name="Recording" component={Record} />
       </Tab.Navigator>
     </NavigationContainer>
