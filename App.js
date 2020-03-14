@@ -29,13 +29,12 @@ function App() {
             }
 
             return <Icon name={iconName} size={24} color={color} />;
-          }
+          },
         })}
         tabBarOptions={{
           activeTintColor: 'purple',
           inactiveTintColor: 'gray',
-        }}
-      >
+        }}>
         <Tab.Screen name="Input" component={Input} />
         <Tab.Screen name="Recording" component={Record} />
       </Tab.Navigator>

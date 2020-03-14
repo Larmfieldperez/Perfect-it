@@ -35,11 +35,6 @@ export class Input extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <TagInput
-          style={styles.tagInput}
-          updateState={this.updateTagState}
-          tags={this.state.tags}
-          /> */}
 
         <TagInput
           updateState={this.updateTagState}
@@ -56,7 +51,6 @@ export class Input extends React.Component {
           onFocus={() => this.setState({tagsColor: 'yellow', tagsText: 'gray'})}
           onBlur={() => this.setState({tagsColor: 'gray', tagsText: 'gray'})}
           autoCorrect={false}
-          // deletElement={color={}}
           tagStyle={styles.tag}
           tagTextStyle={styles.tagText}
           keysForTag={' '}
