@@ -7,73 +7,16 @@ class Record extends React.Component {
   constructor() {
     super();
     this.state = {
-      recognized: '',
-      started: '',
-      results: [],
+      result: [],
+      listening: false,
     };
-    Voice.onSpeechStart = this.onSpeechStart.bind(this);
-    Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
-    Voice.onSpeechResults = this.onSpeechResults.bind(this);
-
-    this.checkAvailability =  this.checkAvailability.bind(this);
-  }
-
-  async _startRecognition(e) {
-    this.setState({
-      recognized: '',
-      started: '',
-      results: [],
-    });
-    try {
-      await Voice.start('en-US');
-      console.log('recognition begun');
-      console.log('event, ', e)
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  onSpeechStart(e) {
-    console.log('speech started');
-    this.setState({
-      started: '√',
-    });
-    console.log('event, ', e)
-  }
-  onSpeechRecognized(e) {
-    console.log('speech recognized');
-    this.setState({
-      recognized: '√',
-    });
-  }
-  onSpeechResults(e) {
-    console.log('speech results')
-    this.setState({
-      results: e.value,
-    });
-  }
-
-  async checkAvailability(){
-    console.log('availability?');
-    await console.log(Voice.isAvailable());
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <View>
-        <Text style={styles.transcript}>Transcript?</Text>
-        {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
-        )}
-
-        <Button onPress={this.checkAvailability} title="check">check</Button>
-
-        <Button style={styles.transcript}
-        onPress={this._startRecognition.bind(this)}
-        title="Start" />
-
+        <Text>take 2 bb</Text>
       </View>
-    </View>
     );
   }
 }

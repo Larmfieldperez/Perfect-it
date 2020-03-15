@@ -26,7 +26,6 @@ export class Input extends React.Component {
     console.log('hi', state);
 
     //somehow now allow an existing word to be added
-
     this.setState({
       tags: state,
     });
