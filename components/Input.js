@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {connect} from 'react-redux';
 import {Dimensions, View, Text, StyleSheet} from 'react-native';
 
 import Icon1 from 'react-native-vector-icons/Feather';
@@ -23,6 +24,7 @@ export class Input extends React.Component {
   }
 
   updateTagState = state => {
+    //or call this function but instead of setting state have it update what's in the redux store
     console.log('hi', state);
 
     //somehow now allow an existing word to be added
@@ -37,7 +39,11 @@ export class Input extends React.Component {
 
         <TagInput
           updateState={this.updateTagState}
+          //call some sort of props.updateWords action
+
           tags={this.state.tags}
+          //and have this pull from the words from the state in props
+
           placeholder="enter your forbidden words here"
           label="Press space to add a word!"
           labelStyle={{color: 'gray', textAlign: 'right'}}
