@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 });
 
 const mapState = state => ({
-  words: [...state.words],
+  words: [...state.words.words],
 });
 
 // const mapDispatch = dispatch => ({

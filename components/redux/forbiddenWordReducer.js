@@ -4,7 +4,7 @@ const UPDATE_WORDS = 'UPDATE_WORDS';
 //not sure what is needed exactly but will see
 
 const initialState = {
-  words: ['peep'],
+  words: ['wiggle'],
 };
 
 //ACTION CREATORS
@@ -22,15 +22,18 @@ const updateWords = words => ({
 // ***later we can work on separating the counts by word ***
 
 //REDUCER
-export default function(state = initialState, action) {
+const wordReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_WORDS:
-      return {
-        words: [...state.words],
-      };
+      return state;
+
     case UPDATE_WORDS:
       return {
         words: [...action.words],
       };
+    default:
+      return state;
   }
-}
+};
+
+export default wordReducer;
