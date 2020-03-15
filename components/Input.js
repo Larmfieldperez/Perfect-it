@@ -98,4 +98,14 @@ const styles = StyleSheet.create({
   // },
 });
 
+const mapState = state => ({
+  words: [...state.words],
+});
+
+// const mapDispatch = dispatch => ({
+
+// })
+
 export default Input;
+// export default connect(mapState, null)(Input);
+

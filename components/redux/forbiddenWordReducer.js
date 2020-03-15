@@ -4,7 +4,7 @@ const UPDATE_WORDS = 'UPDATE_WORDS';
 //not sure what is needed exactly but will see
 
 const initialState = {
-  words: [],
+  words: ['peep'],
 };
 
 //ACTION CREATORS
