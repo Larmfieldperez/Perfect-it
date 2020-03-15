@@ -31,20 +31,21 @@ class Record extends React.Component {
     transcript.forEach(wrd => {
       wrd = wrd.toLowerCase();
       if (forbidden.includes(wrd)) newCount++;
-    })
+    });
 
     console.log('setting count in state');
     this.setState({
       saidCount: newCount,
-    })
-
+    });
   }
 
   startRecording() {
     console.log('starting');
     Voice.start('en-us');
     this.setState({
+      result: '',
       listening: true,
+      saidCount: 0,
     });
   }
 
@@ -82,19 +83,23 @@ class Record extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>take 2 bb</Text>
         <Button
           title="START"
-          onPress={this.startRecording}
+          onPress={() => {
+            if (!this.state.listening) this.startRecording();
+            else alert("hey you're already recording!");
+          }}
           style={styles.button}
         />
         <Button
           title="STOP"
           onPress={() => {
-            this.stopRecording();
+            if (this.state.listening) {
+              this.stopRecording();
 
-            console.log('checking');
-            this.checkTranscription();
+              console.log('checking');
+              this.checkTranscription();
+            } else alert("hey there's no current recording to stop");
           }}
           style={styles.button}
         />

@@ -9,14 +9,17 @@ const initialState = {
 
 //ACTION CREATORS
 const gotWords = words => ({
+  //this should be used by recording component? get the words to be able to know what words to count
   type: GOT_WORDS,
   words,
 });
 
 const updateWords = words => ({
+  //this should only be used by input component, set the words that need to be counted
   type: UPDATE_WORDS,
   words,
 });
+// ***later we can work on separating the counts by word ***
 
 //REDUCER
 export default function(state = initialState, action) {
