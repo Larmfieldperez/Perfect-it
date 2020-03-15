@@ -10,11 +10,34 @@ class Record extends React.Component {
     this.state = {
       result: '',
       listening: false,
+      forbidden: ['wiggle', 'hey'],
+      saidCount: 0,
     };
     this.startRecording = this.startRecording.bind(this);
     Voice.onSpeechResults = this.recordingResults.bind(this);
     this.stopRecording = this.stopRecording.bind(this);
     Voice.onSpeechEnd = this.onSpeechEnd.bind(this);
+    this.checkTranscription = this.checkTranscription.bind(this);
+  }
+
+  checkTranscription() {
+    console.log('in check transcript');
+    const transcript = this.state.result.split(' ');
+    const forbidden = this.state.forbidden;
+
+    let newCount = 0;
+
+    console.log('split transcript ', transcript);
+    transcript.forEach(wrd => {
+      wrd = wrd.toLowerCase();
+      if (forbidden.includes(wrd)) newCount++;
+    })
+
+    console.log('setting count in state');
+    this.setState({
+      saidCount: newCount,
+    })
+
   }
 
   startRecording() {
@@ -44,7 +67,7 @@ class Record extends React.Component {
     });
 
     console.log('ended');
-    console.log(this.state);
+    console.log('state after end ', this.state);
   }
 
   onSpeechEnd() {
@@ -67,11 +90,19 @@ class Record extends React.Component {
         />
         <Button
           title="STOP"
-          onPress={this.stopRecording}
+          onPress={() => {
+            this.stopRecording();
+
+            console.log('checking');
+            this.checkTranscription();
+          }}
           style={styles.button}
         />
+
         <Text>Transcription?</Text>
         <Text>{this.state.result}</Text>
+        <Text>word count:</Text>
+        <Text>{this.state.saidCount}</Text>
       </View>
     );
   }
