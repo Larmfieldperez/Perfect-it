@@ -14,7 +14,7 @@ const gotWords = words => ({
   words,
 });
 
-const updateWords = words => ({
+export const updateWords = words => ({
   //this should only be used by input component, set the words that need to be counted
   type: UPDATE_WORDS,
   words,
