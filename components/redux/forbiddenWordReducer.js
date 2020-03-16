@@ -4,7 +4,7 @@ const UPDATE_WORDS = 'UPDATE_WORDS';
 //not sure what is needed exactly but will see
 
 const initialState = {
-  words: ['wiggle'],
+  words: [],
 };
 
 //ACTION CREATORS
@@ -14,7 +14,7 @@ const gotWords = words => ({
   words,
 });
 
-const updateWords = words => ({
+export const updateWords = words => ({
   //this should only be used by input component, set the words that need to be counted
   type: UPDATE_WORDS,
   words,

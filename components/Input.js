@@ -1,6 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+
 import {connect} from 'react-redux';
+import {updateWords} from './redux/forbiddenWordReducer';
+
 import {Dimensions, View, Text, StyleSheet} from 'react-native';
 
 import Icon1 from 'react-native-vector-icons/Feather';
@@ -18,14 +21,14 @@ export class Input extends React.Component {
     this.state = {
       tags: {
         tag: '',
-        tagsArray: ['peep'],
+        tagsArray: [],
       },
     };
   }
 
   updateTagState = state => {
     //or call this function but instead of setting state have it update what's in the redux store
-    console.log('hi', state);
+    console.log('hi im updateTagState', state);
 
     //somehow now allow an existing word to be added
     this.setState({
@@ -38,7 +41,10 @@ export class Input extends React.Component {
       <View style={styles.container}>
 
         <TagInput
-          updateState={this.updateTagState}
+          updateState={(evt) => {
+            this.updateTagState(evt);
+            this.props.updateWords(this.state.tags.tagsArray);
+          }}
           //call some sort of props.updateWords action
 
           tags={this.state.tags}
@@ -98,14 +104,14 @@ const styles = StyleSheet.create({
   // },
 });
 
-const mapState = state => ({
-  words: [...state.words.words],
+// const mapState = state => ({
+//   words: [...state.words.words],
+// });
+
+const mapDispatch = dispatch => ({
+  updateWords: newWords => dispatch(updateWords(newWords)),
 });
 
-// const mapDispatch = dispatch => ({
-
-// })
-
-export default Input;
-// export default connect(mapState, null)(Input);
+// export default Input;
+export default connect(null, mapDispatch)(Input);
 

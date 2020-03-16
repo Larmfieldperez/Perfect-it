@@ -27,37 +27,46 @@ class Record extends React.Component {
   checkTranscription() {
     console.log('in check transcript');
     const transcript = this.state.result.split(' ');
-    const forbidden = this.state.forbidden;
+    const forbidden = this.props.forbidden;
+    console.log('forbidden words, ', forbidden)
 
     let newCount = 0;
 
     console.log('split transcript ', transcript);
     transcript.forEach(wrd => {
       wrd = wrd.toLowerCase();
-      if (forbidden.includes(wrd)) newCount++;
+      console.log('word in foreach ', wrd)
+
+      //doing this the dumb way pls work
+      for(let i = 0; i < forbidden.length; i++){
+        let curr = forbidden[i];
+        if (curr.toLowerCase() === wrd) newCount++;
+      }
     });
 
-    console.log('setting count in state');
+    console.log('setting count in state, new count is ', newCount);
     this.setState({
       saidCount: newCount,
     });
+    console.log('STATE SET ', this.state);
+    // return newCount;
   }
 
   startRecording() {
     console.log('starting');
-    Voice.start('en-us');
     this.setState({
       result: '',
       listening: true,
       saidCount: 0,
     });
+    Voice.start('en-us');
   }
 
   recordingResults(res) {
-    console.log('in recording results');
+    console.log('in results func')
+    console.log(res)
 
-    console.log('unstringified res');
-    console.log(res.value);
+    console.log(res.value[0]);
     this.setState({
       result: res.value[0],
     });
@@ -65,11 +74,15 @@ class Record extends React.Component {
 
   stopRecording() {
     console.log('stop recording button pressd');
+    const count = this.checkTranscription();
 
     Voice.stop();
     this.setState({
+      ...this.state,
       listening: false,
-    });
+      saidCount: count,
+    })
+
 
     console.log('ended');
     console.log('state after end ', this.state);
@@ -88,7 +101,6 @@ class Record extends React.Component {
     const forbiddenWords = this.props.forbidden;
 
     console.log('in render in record.js');
-    console.log('props', this.props);
 
     return (
       <View style={styles.container}>
