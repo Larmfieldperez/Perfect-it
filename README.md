@@ -1,8 +1,6 @@
 # Perfect-it
 
-### what
-A mobile app built with react-native to help you practice speeches, presentations, or anything else. Users can input words they 
-want the app to keep track of such as filler words like "um" and "uh" or other any other words. The app will record your speech 
-and tell you how many times you used any of the words you wanted to track.
+Perfect-it is a mobile app built with react-native aimed to help users practice public speaking. Users can input any words they want the app to track (such as filler words like "um" and "uh"). The app will record your speech 
+and report how often these tracked words were used. 
 
-more features tbd.
+currently a work in progress. 
